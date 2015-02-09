@@ -1,0 +1,490 @@
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "published_at" datetime, "created_at" datetime, "updated_at" datetime, "locations" varchar(255), "excerpt" varchar(255), "location" varchar(255), "user_id" integer) [0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "articles_categories" ("article_id" integer, "category_id" integer) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "name" varchar(255), "email" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "name" varchar(255), "birthday" date, "bio" text, "color" varchar(255), "twitter" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "hashed_password" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150110061929')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141218032433')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141218035205')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141227055230')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141227060338')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141227064004')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141228063602')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141228063709')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141229025702')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (1.1ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 03:29:35 UTC', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 914507133)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:29:35', '2015-02-04 03:29:35', 330436437)
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 03:29:35.241026"], ["title", "Test article"], ["updated_at", "2015-02-04 03:29:35.241026"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 03:44:20 UTC', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:44:20', '2015-02-04 03:44:20', 330436437)
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 03:44:20.964534"], ["title", "Test article"], ["updated_at", "2015-02-04 03:44:20.964534"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 03:48:30 UTC', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:48:30', '2015-02-04 03:48:30', 330436437)
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 03:48:30.431661"], ["title", "Test article"], ["updated_at", "2015-02-04 03:48:30.431661"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 03:48:51 UTC', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 03:48:51', '2015-02-04 03:48:51', 330436437)
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 03:48:51.746579"], ["title", "Test article"], ["updated_at", "2015-02-04 03:48:51.746579"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287[0m  [["title", "New Title"], ["updated_at", "2015-02-04 03:48:51.753617"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.9ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.8ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 04:03:36 UTC', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 517600287, 914507133)
+  [1m[36mFixture Delete (0.6ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 298486374)[0m
+  [1m[35mFixture Delete (0.7ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 04:03:36', '2015-02-04 04:03:36', 330436437)
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 04:03:36.928424"], ["title", "Test article"], ["updated_at", "2015-02-04 04:03:36.928424"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.8ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+ArticleTest: test_should_destroy_article
+----------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "articles_categories" WHERE "articles_categories"."article_id" = ?[0m  [["article_id", 517600287]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287  [["title", "New Title"], ["updated_at", "2015-02-04 04:03:36.961461"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 04:04:02 UTC', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 04:04:02', '2015-02-04 04:04:02', 330436437)
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 04:04:02.606689"], ["title", "Test article"], ["updated_at", "2015-02-04 04:04:02.606689"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+ArticleTest: test_should_destroy_article
+----------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "articles_categories" WHERE "articles_categories"."article_id" = ?[0m  [["article_id", 517600287]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287  [["title", "New Title"], ["updated_at", "2015-02-04 04:04:02.635263"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-01 04:04:18 UTC', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-04 04:04:18', '2015-02-04 04:04:18', 330436437)
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-04 04:04:18.498682"], ["title", "Test article"], ["updated_at", "2015-02-04 04:04:18.498682"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+ArticleTest: test_should_destroy_article
+----------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "articles_categories" WHERE "articles_categories"."article_id" = ?[0m  [["article_id", 517600287]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287[0m  [["title", "New Title"], ["updated_at", "2015-02-04 04:04:18.525277"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.9ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.7ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-02 04:49:28 UTC', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 517600287, 914507133)
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 298486374)[0m
+  [1m[35mFixture Delete (0.5ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-05 04:49:28', '2015-02-05 04:49:28', 330436437)
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-05 04:49:28.506205"], ["title", "Test article"], ["updated_at", "2015-02-05 04:49:28.506205"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+ArticleTest: test_should_destroy_article
+----------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "articles_categories" WHERE "articles_categories"."article_id" = ?[0m  [["article_id", 517600287]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287[0m  [["title", "New Title"], ["updated_at", "2015-02-05 04:49:28.534958"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-02 04:53:33 UTC', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-05 04:53:33', '2015-02-05 04:53:33', 330436437)
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-05 04:53:34.014583"], ["title", "Test article"], ["updated_at", "2015-02-05 04:53:34.014583"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+ArticleTest: test_should_destroy_article
+----------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "articles_categories" WHERE "articles_categories"."article_id" = ?[0m  [["article_id", 517600287]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------------------------
+ArticleTest: test_should_not_create_an_article_without_title_nor_body
+---------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287[0m  [["title", "New Title"], ["updated_at", "2015-02-05 04:53:34.052967"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "articles"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "articles" ("title", "body", "published_at", "created_at", "updated_at", "id", "user_id") VALUES ('Welcome to Rails', 'Rails is such a nice web framework writtent in Ruby', '2015-02-02 04:53:52 UTC', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 517600287, 914507133)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "comments"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("article_id", "name", "email", "body", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', 'MyText', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "profiles"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "profiles" ("user_id", "name", "birthday", "bio", "color", "twitter", "created_at", "updated_at", "id") VALUES (1, 'MyString', '2014-12-27', 'MyText', 'MyString', 'MyString', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('eugene@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 914507133)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "hashed_password", "created_at", "updated_at", "id") VALUES ('lauren@example.com', 'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4', '2015-02-05 04:53:52', '2015-02-05 04:53:52', 330436437)
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_create_article
+---------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 914507133]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "articles" ("body", "created_at", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Test body"], ["created_at", "2015-02-05 04:53:52.388810"], ["title", "Test article"], ["updated_at", "2015-02-05 04:53:52.388810"], ["user_id", 914507133]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------
+ArticleTest: test_should_destroy_article
+----------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "articles_categories" WHERE "articles_categories"."article_id" = ?[0m  [["article_id", 517600287]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "articles" WHERE "articles"."id" = ?  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+ArticleTest: test_should_find_article
+-------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1  [["id", 517600287]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------------------------
+ArticleTest: test_should_not_create_an_article_without_title_nor_body
+---------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+ArticleTest: test_should_update_article
+---------------------------------------
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 517600287]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "articles" SET "title" = ?, "updated_at" = ? WHERE "articles"."id" = 517600287[0m  [["title", "New Title"], ["updated_at", "2015-02-05 04:53:52.427698"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
