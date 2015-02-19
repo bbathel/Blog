@@ -31,7 +31,7 @@ class ArticlesControllerTest < ActionController::TestCase
     get :show, id: @article.to_param
     assert_response :success
     assert_template 'show'
-    assert_not_nill assigns(:article)
+    assert_not_nil assigns(:article)
     assert assigns(:article).valid?
   end
 
@@ -48,10 +48,13 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   test "should destroy article" do
+    login_as(:eugene)
+    assert_nothing_raised {Article.find(@article.to_param)}
     assert_difference('Article.count', -1) do
       delete :destroy, id: @article
     end
-
+    assert_response :redirect
     assert_redirected_to articles_path
+    assert_raise(ActiveRecord::RecordNotFound){Article.find(@article.to_param)}
   end
 end
